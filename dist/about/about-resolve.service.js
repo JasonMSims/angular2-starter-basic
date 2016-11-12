@@ -9,19 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
-        this.message = 'This is the sample message.';
+var user_service_1 = require('../shared/services/user.service');
+var AboutUsersResolve = (function () {
+    function AboutUsersResolve(service) {
+        this.service = service;
     }
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: 'my-app',
-            styles: ["\n    .navbar-nav .active {\n      color: #fff;\n    }\n  "],
-            templateUrl: './app/app.component.html'
-        }), 
-        __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    AboutUsersResolve.prototype.resolve = function (route) {
+        return this.service.getUsers().then(function (users) { return users; });
+    };
+    AboutUsersResolve = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [user_service_1.UserService])
+    ], AboutUsersResolve);
+    return AboutUsersResolve;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.AboutUsersResolve = AboutUsersResolve;
+//# sourceMappingURL=about-resolve.service.js.map
